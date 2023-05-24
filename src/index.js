@@ -1,6 +1,9 @@
 const form = document.getElementById('textInput')
 const submitBtn = document.getElementById('sendBtn')
 const keyForm = document.getElementById('keyInput')
+const messageStatus = document.getElementById('message_status')
+
+
 
 const data1 = "this is a message"
 const key1 = "secret"
@@ -14,16 +17,35 @@ console.log("decrypted =",xorCipher(xorCipher(data1,key1),key1))
 submitBtn.addEventListener('click',() =>{
     const data = form.value
     const keyData = keyForm.value
-     console.log('text data:',data)
-     console.log('key data:',keyData)
 
-    const encrypted = xorCipher(data,keyData)
-    console.log('encrypted:',stringToBinary(encrypted))
+    if(data != "" && keyData != ""){
 
-    send(stringToBinary(encrypted))
+        console.log('text data:',data)
+        console.log('key data:',keyData)
+   
+       const encrypted = xorCipher(data,keyData)
+       console.log('encrypted:',stringToBinary(encrypted))
+   
+       send(stringToBinary(encrypted))
+   
+       form.value = ""
+       keyForm.value = ""
+       messageStatus.innerText = "message sent"
+   
+       setTimeout(() => {
+           messageStatus.innerText = ""
+       }, 3000);
+    }
+
+    else{
+        setTimeout(() => {
+            messageStatus.innerText = "please complete the data"
+        }, 3000);
+    }
 
     form.value = ""
-    keyForm.value = ""
+       keyForm.value = ""
+    
 })
 
 const send = async (message) => {

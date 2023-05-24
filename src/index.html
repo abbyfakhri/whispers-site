@@ -9,11 +9,30 @@
     <title>Whispers</title>
 </head>
 <body>
-    <input class="form-style" type="text" placeholder="enter something" id="textInput">
+
+    <div >
+        <h1 class="centered title">whispers</h1>
+        <h2 class="centered subtitle">let's just keep it between us</h2>
+    </div>
+
+    <div class="centered">
+        <div class="viewContainer centered-vertical">
+
+            <h2>Send Something</h2>
+
+            <input class="form-style " type="text" style="margin-top: 0;" placeholder="write your message" id="textInput">
+            
+            <p>don't forget to give it a password</p>
+            <input class=" form-style" type="password" name="key input" style="margin-top: 0;" placeholder="enter your password" id = "keyInput">
     
-    <input type="text" name="key input" placeholder="enter your key" id = "keyInput">
+            <button class=" submit-btn" id="sendBtn">send message</button>
+            <h1 id="message_status"></h1>
+        </div>
+
+
+    </div>
+
     
-    <button id="sendBtn">send message</button>
 
     <script src="./XOR_cypher.js"></script>
     <script src="./index.js"></script>
